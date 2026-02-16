@@ -1,8 +1,13 @@
+// Debug: Check if script is loaded
+console.log('Script loaded successfully');
+
 // Import the data to customize and insert them into page
 const fetchData = () => {
+  console.log('fetchData called');
   fetch("customize.json")
     .then(data => data.json())
     .then(data => {
+      console.log('Data loaded:', data);
       dataArr = Object.keys(data);
       dataArr.map(customData => {
         if (data[customData] !== "") {
@@ -28,9 +33,13 @@ const fetchData = () => {
         // Check if the iteration is over
         // Run amimation if so
         if ( dataArr.length === dataArr.indexOf(customData) + 1 ) {
+          console.log('Starting animation timeline');
           animationTimeline();
         } 
       });
+    })
+    .catch(error => {
+      console.error('Error loading customize.json:', error);
     });
 };
 
