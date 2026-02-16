@@ -295,3 +295,64 @@ body {
     font-weight: lighter;
   }
 }
+
+/* 蛋糕SVG样式 */
+.cake-area svg {
+  width: 220px;
+  height: 220px;
+  display: block;
+  margin: 0 auto;
+}
+.cake-area {
+  text-align: center;
+}
+#blow-btn {
+  margin-top: 20px;
+  font-size: 18px;
+  padding: 8px 24px;
+  border-radius: 8px;
+  background: #ffb347;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #ffd9b3;
+  transition: background 0.2s;
+}
+#blow-btn:hover {
+  background: #ff9800;
+}
+/* 火焰动画 */
+.candle-flame {
+  transform-origin: 50% 100%;
+  animation: flame-flicker 0.4s infinite alternate;
+}
+@keyframes flame-flicker {
+  0% { transform: scaleY(1) scaleX(1) translateY(0); opacity: 1; }
+  50% { transform: scaleY(1.1) scaleX(0.95) translateY(-2px); opacity: 0.85; }
+  100% { transform: scaleY(0.9) scaleX(1.05) translateY(2px); opacity: 1; }
+}
+
+/* 祝福语和图片区域样式 */
+.wish-text-img-area {
+  text-align: center;
+  margin-top: 40px;
+}
+#big-wish-text {
+  font-size: 2.2em;
+  color: #ffb300;
+  font-weight: bold;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px #fffde7, 0 1px 0 #ffe082;
+}
+#wish-img {
+  max-width: 260px;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px #ffe082;
+  display: block;
+  margin: 0 auto;
+}
+.final-outro-area {
+  text-align: center;
+  margin-top: 40px;
+}
