@@ -7,11 +7,21 @@ const fetchData = () => {
       dataArr.map(customData => {
         if (data[customData] !== "") {
           if (customData === "imagePath") {
-            document
-              .querySelector(`[data-node-name*="${customData}"]`)
-              .setAttribute("src", data[customData]);
+            const imgElement = document.querySelector(
+              `[data-node-name*="${customData}"]`
+            );
+            if (imgElement) {
+              const value = data[customData];
+              const finalPath = value.startsWith("img/") ? value : `img/${value}`;
+              imgElement.setAttribute("src", finalPath);
+            }
           } else {
-            document.querySelector(`[data-node-name*="${customData}"]`).innerText = data[customData];
+            const textNode = document.querySelector(
+              `[data-node-name*="${customData}"]`
+            );
+            if (textNode) {
+              textNode.innerText = data[customData];
+            }
           }
         }
 
@@ -196,17 +206,17 @@ const animationTimeline = () => {
       "+=1"
     )
     .staggerFromTo(
-      ".baloons img",
-      2.5,
+      ".baloons .firework",
+      3.5,
       {
-        opacity: 0.9,
-        y: 1400
+        opacity: 0,
+        y: 80
       },
       {
         opacity: 1,
-        y: -1000
+        y: -40
       },
-      0.2
+      0.4
     )
     .from(
       ".lydia-dp",
@@ -221,9 +231,9 @@ const animationTimeline = () => {
       "-=2"
     )
     .from(".hat", 0.5, {
-      x: -100,
-      y: 350,
-      rotation: -180,
+      x: -50,
+      y: 150,
+      scale: 0.5,
       opacity: 0
     })
     .staggerFrom(
@@ -265,32 +275,18 @@ const animationTimeline = () => {
       },
       "party"
     )
-    .staggerTo(
-      ".eight svg",
-      1.5,
-      {
-        visibility: "visible",
-        opacity: 0,
-        scale: 80,
-        repeat: 3,
-        repeatDelay: 1.4
-      },
-      0.3
-    )
+    .add(() => {
+      fireConfetti();
+    }, "party+=0.3")
     .to(".six", 0.5, {
       opacity: 0,
       y: 30,
       zIndex: "-1"
     })
     .staggerFrom(".nine p", 1, ideaTextTrans, 1.2)
-    .to(
-      ".last-smile",
-      0.5,
-      {
-        rotation: 90
-      },
-      "+=1"
-    );
+    .to(".last-smile", 0.5, {
+      scale: 1.05
+    });
 
   // tl.seek("currentStep");
   // tl.timeScale(2);

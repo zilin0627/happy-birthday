@@ -5,11 +5,13 @@ html {
 body {
   margin: 0;
   font-family: "Work Sans", sans-serif;
+  background: radial-gradient(circle at top, #ffe6f3 0, #f9f0ff 30%, #e6f7ff 60%, #ffffff 100%);
 }
 
 .container {
   height: 100vh;
-  width: 100vh;
+  width: 100vw;
+  max-width: 960px;
   margin: 0 auto;
   text-align: center;
   visibility: hidden;
@@ -34,11 +36,11 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 20vh;
+  top: 24vh;
 }
 
 .one {
-  font-size: 4.5rem;
+  font-size: 5rem;
 }
 
 .one > img {
@@ -49,12 +51,23 @@ body {
 }
 
 .two {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: lighter;
 }
 
 .three {
-  font-size: 3rem;
+  font-size: 3.6rem;
+}
+
+.three p,
+.five p,
+.nine p {
+  display: inline-block;
+  padding: 0.5em 1.1em;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .four .text-box {
@@ -86,7 +99,7 @@ body {
 }
 
 .five p {
-  font-size: 2rem;
+  font-size: 2.3rem;
   position: absolute;
   left: 0;
   right: 0;
@@ -114,37 +127,90 @@ body {
 
 .six {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  opacity: 0; /* 默认隐藏，时间线里再淡入 */
 }
 
-.six img {
+.photo-wrapper {
+  position: relative;
   display: inline-block;
-  max-width: 100%;
+}
+
+.photo-wrapper img {
+  display: block;
+  max-width: min(90vw, 640px);
+  max-height: 60vh;
+  width: auto;
   height: auto;
+  border-radius: 24px;
+  object-fit: cover;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
 }
 
-.six .hat {
+.photo-wrapper .hat {
   position: absolute;
-  width: 80px;
-  top: -35px;
-  left: 41.5%;
-  /* transform: scale(0.1); */
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.4rem;
 }
 
-.baloons img {
+.six .wish {
+  margin-top: -16px;
+  padding: 16px 28px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
   display: inline-block;
+}
+
+.baloons {
+  position: relative;
+  height: 100vh;
+}
+
+.baloons .firework {
   position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffe6f3 0, #ff8ad4 40%, rgba(255, 255, 255, 0) 70%);
+  box-shadow: 0 0 18px rgba(255, 122, 198, 0.7);
 }
 
-.baloons img:nth-child(even) {
-  left: -10%;
+.baloons .firework:nth-child(1) {
+  left: 10%;
+  bottom: 5%;
 }
 
-.baloons img:nth-child(odd) {
-  right: -10%;
-}
-
-.baloons img:nth-child(3n + 0) {
+.baloons .firework:nth-child(2) {
   left: 30%;
+  bottom: 15%;
+}
+
+.baloons .firework:nth-child(3) {
+  left: 50%;
+  bottom: 8%;
+}
+
+.baloons .firework:nth-child(4) {
+  left: 65%;
+  bottom: 20%;
+}
+
+.baloons .firework:nth-child(5) {
+  left: 80%;
+  bottom: 10%;
+}
+
+.baloons .firework:nth-child(6) {
+  left: 40%;
+  bottom: 25%;
 }
 
 .eight svg {
@@ -156,64 +222,14 @@ body {
   z-index: -1;
 }
 
-.eight svg:nth-child(1) {
-  top: 7vh;
-  left: 5vw;
-  fill: #bd6ecf;
-}
-
-.eight svg:nth-child(2) {
-  top: 23vh;
-  left: 35vw;
-  fill: #7dd175;
-}
-
-.eight svg:nth-child(3) {
-  top: 33vh;
-  left: 23vw;
-  fill: #349d8b;
-}
-
-.eight svg:nth-child(4) {
-  top: 43vh;
-  left: 57vw;
-  fill: #347a9d;
-}
-
-.eight svg:nth-child(5) {
-  top: 68vh;
-  left: 7vw;
-  fill: #c66053;
-}
-
-.eight svg:nth-child(6) {
-  top: 42vh;
-  left: 77vw;
-  fill: #bfaa40;
-}
-
-.eight svg:nth-child(7) {
-  top: 68vh;
-  left: 83vw;
-  fill: #e3bae8;
-}
-
-.eight svg:nth-child(8) {
-  top: 86vh;
-  left: 37vw;
-  fill: #8762cb;
-}
-
-.eight svg:nth-child(9) {
-  top: 94vh;
-  left: 87vw;
-  fill: #9a90da;
+.eight {
+  display: none;
 }
 
 .wish-hbd {
   font-size: 3em;
-  margin: 0;
-  text-transform: uppercase;
+  margin: 0 0 8px;
+  text-transform: none;
 }
 
 .wish h5 {
@@ -223,8 +239,14 @@ body {
 }
 
 .nine p {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: lighter;
+}
+
+.last-smile {
+  display: inline-block;
+  max-width: 90%;
+  white-space: nowrap;
 }
 
 #replay {
@@ -233,30 +255,6 @@ body {
 }
 
 /* Media Queries */
-@media screen and (max-height: 1000px) {
-  .six .hat {
-    left: 40%;
-  }
-}
-
-@media screen and (max-height: 800px) {
-  .six .hat {
-    left: 37%;
-  }
-}
-
-@media screen and (max-height: 700px) {
-  .six .hat {
-    left: 32%;
-  }
-}
-
-@media screen and (max-height: 850px) and (max-width: 450px) {
-  .six .hat {
-    left: 32%;
-  }
-}
-
 @media screen and (max-width: 500px) {
   .container {
     width: 90%;
